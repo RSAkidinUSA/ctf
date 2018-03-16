@@ -1,12 +1,7 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
 #include <string.h>
 
-#define FLAGLEN 16
-#define RANGEMIN 40
-#define RANGEMAX 126
-#define PI 314159265
+#include "reveng.h"
 
 static unsigned char FLAG[FLAGLEN] = "revengflag000";
 
@@ -20,10 +15,6 @@ void genFlag(void) {
 			FLAG[spot] ^= xor;
 		} while ((FLAG[spot] < RANGEMIN) || (FLAG[spot] > RANGEMAX));
 	}
-}
-
-char makePrintable(unsigned char c) {
-	return (c % (RANGEMAX - RANGEMIN)) + RANGEMIN;
 }
 
 int main(int argc, char **argv) {

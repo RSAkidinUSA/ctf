@@ -8,11 +8,29 @@ static unsigned char FLAG2[FLAGLEN] = "revengflag00002";
 
 int main() {
 	char tmp[16];
-	// generate the flag
+	// generate the flag for attack 0
 	memset(tmp, '\0', 16);
 	strncpy(tmp, FLAG0, 15);
 	
 	genFlag0(tmp);
 	printf("Flag0: flag{%s}\n", FLAG0);
 	printf("Value to write to reveng0.c: %s\n", tmp);
+
+	// generate the flag for attack 1
+	memset(tmp, '\0', 16);
+	strncpy(tmp, FLAG1, 15);
+	
+	genFlag1(tmp);
+	printf("Flag1: flag{%s}\n", FLAG1);
+	printf("Value to write to reveng0.c: %s\n", tmp);
+
+	// generate the flag for attack 2
+	memset(tmp, '\0', 16);
+	strncpy(tmp, FLAG2, 15);
+	
+	genFlag2(tmp);
+	printf("Flag2: flag{%s}\n", FLAG2);
+	printf("Value to write to reveng0.c: %s\n", tmp);
+
+	return 0;
 }
