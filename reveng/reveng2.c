@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "reveng.h"
+#include "flags.h"
 
-static unsigned char FLAG[FLAGLEN] = "R&eoJf1!EFr%@\"B";
+unsigned char FLAG2[FLAGLEN];
 
 int main(int argc, char **argv) {
 	if (argc != 2 || (strlen(argv[1]) == 0)) {
@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
 	genFlag2(guess);
 
 	printf("Guess of 'flag{%s}' was incorrect\n", argv[1]);
-	if (strncmp(guess, FLAG, 16)) {
+	if (strncmp(guess, FLAG2, 16)) {
 		return 1;
 	} else {
 		return 0;

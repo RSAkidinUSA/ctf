@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "reveng.h"
+#include "flags.h"
 
-static unsigned char FLAG[FLAGLEN] = "[5HY(QJ)ODJp[[[";
+extern unsigned char FLAG0[FLAGLEN];
 
 int main(int argc, char **argv) {
 	if (argc != 2 || (strlen(argv[1]) == 0)) {
@@ -20,7 +20,7 @@ int main(int argc, char **argv) {
 	// generate the flag
 	genFlag0(guess);
 
-	if (strncmp(guess, FLAG, 16)) {
+	if (strncmp(guess, FLAG0, 16)) {
 		printf("Guess of 'flag{%s}' was incorrect\n", argv[1]);
 	} else {
 		printf("Congratulations, 'flag{%s}' is the correct flag\n", argv[1]);

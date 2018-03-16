@@ -4,6 +4,7 @@
 
 static char SALT[FLAGLEN] = "SALTY SEA SALT!";
 #define shiftAmount 31;
+void (*genFlag2)(char *flag) = &genFlag1;
 
 char myShift(unsigned char sub) {
 	unsigned char tmp = sub + shiftAmount;
@@ -43,7 +44,7 @@ void genFlag1(char *flag) {
 	}
 }
 
-void genFlag2(char *flag) {
+void genFlag3(char *flag) {
 	srand(PI);
 	int max = rand() % PI;
 	for (int i = 0; i < max; i++) {
