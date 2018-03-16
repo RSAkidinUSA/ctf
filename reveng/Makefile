@@ -7,10 +7,10 @@ BIN = inc
 all: 
 	@echo "Invalid use of make, please use one of the given options"
 
-build-challenge: 
-	$(CC) reveng0.c $(GEN) -o reveng0
-	$(CC) reveng1.c $(GEN) -o reveng1
-	$(CC) reveng2.c $(GEN) -o reveng2
+build-challenges: 
+	$(CC) reveng0.c $(GEN) -o reveng0 -O0
+	$(CC) reveng1.c $(GEN) -o reveng1 -O1
+	$(CC) reveng2.c $(GEN) -o reveng2 -O2
 
 build-admin:
 	$(CC) admin.c $(GEN) -o reveng-admin

@@ -3,10 +3,11 @@
 
 #include "reveng.h"
 
-static unsigned char FLAG[FLAGLEN] = "yY4-+iz7$5DeO4y";
+static unsigned char FLAG[FLAGLEN] = "R`=KiR-|Au1\\bO_";
 
 int main(int argc, char **argv) {
 	if (argc != 2 || (strlen(argv[1]) == 0)) {
+		printf("Reverse Engineering flag 2\n");
 		printf("Usage: %s guess\n", argv[0]);
 		return(1);
 	}
@@ -17,7 +18,7 @@ int main(int argc, char **argv) {
 		guess[strlen(guess)] = guess[0];
 	}
 	// generate the flag
-	genFlag0(guess);
+	genFlag2(guess);
 	if (strncmp(guess, FLAG, 16)) {
 		printf("Guess of 'flag{%s}' was incorrect\n", argv[1]);
 	} else {

@@ -3,57 +3,26 @@
 
 #include "reveng.h"
 
-static unsigned char FLAG[FLAGLEN] = "revengflag000";
-
-void genFlag(void) {
-	srand(PI);
-	int max = rand() % PI;
-	for (int i = 0; i < max; i++) {
-		int spot = rand() % FLAGLEN;
-		do {
-			uint8_t xor = rand() % 0x7F;
-			FLAG[spot] ^= xor;
-		} while ((FLAG[spot] < RANGEMIN) || (FLAG[spot] > RANGEMAX));
-	}
-}
+static unsigned char FLAG[FLAGLEN] = "R&eoJf1!EFr%@\"B";
 
 int main(int argc, char **argv) {
 	if (argc != 2 || (strlen(argv[1]) == 0)) {
+		printf("Reverse Engineering flag 1\n");
 		printf("Usage: %s mask(string)\n", argv[0]);
 		return(1);
 	}
-	unsigned char mask[5];
-	memset(mask, 0, 5);
-	strncpy(mask, argv[1], 4);
-	while (strlen(mask) < 4) {
-		mask[strlen(mask)] = mask[0];
+	unsigned char guess[16];
+	memset(guess, 0, 16);
+	strncpy(guess, argv[1], 15);
+	while (strlen(guess) < 15) {
+		guess[strlen(guess)] = guess[0];
 	}
 	// generate the flag
-	genFlag();
-	// Uncomment the following line only to determine the flag to save
-	// printf("flag{%s}\n", FLAG);
+	genFlag1(guess);
 
-	// flag manipulation
-	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < 4; j++) {
-			unsigned char *tmp = &(FLAG[j * 4 + i]);
-			switch(i) {
-				case 0:
-					*tmp ^= mask[j];
-					break;
-				case 1:
-					*tmp |= ~mask[j];
-					break;
-				case 2:
-					*tmp &= mask[j];
-					break;
-				default:
-					*tmp = ~*tmp;
-					break;
-			}
-			*tmp = makePrintable(*tmp);
-		}
+	if (strncmp(guess, FLAG, 16)) {
+		printf("Guess of 'flag{%s}' was incorrect\n", argv[1]);
+	} else {
+		printf("Congratulations, 'flag{%s}' is the correct flag\n", argv[1]);
 	}
-	// print flag manipulated by input chars
-	printf("flag{%s}\n", FLAG);
 }
