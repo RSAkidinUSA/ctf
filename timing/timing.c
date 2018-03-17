@@ -38,6 +38,7 @@ int checkflag (char *guess) {
 		}
 	}
 	printf("Correct password!\n");
+	printf("The flag is: flag{%s}\n", FLAG);
 	fflush(stdout);
 	return 1;
 }
